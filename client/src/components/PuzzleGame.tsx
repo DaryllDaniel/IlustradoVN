@@ -6,12 +6,13 @@ interface PuzzleGameProps {
   imageUrl: string;
   sceneTitle: string;
   onComplete: (puzzleId: string) => void;
+  onSkip?: () => void;
 }
 
 const GRID_SIZE = 4;
 const EMPTY_TILE_ID = GRID_SIZE * GRID_SIZE - 1;
 
-export function PuzzleGame({ imageUrl, sceneTitle, onComplete }: PuzzleGameProps) {
+export function PuzzleGame({ imageUrl, sceneTitle, onComplete, onSkip }: PuzzleGameProps) {
   const [tiles, setTiles] = useState<number[]>([]);
   const [isComplete, setIsComplete] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
@@ -93,6 +94,15 @@ export function PuzzleGame({ imageUrl, sceneTitle, onComplete }: PuzzleGameProps
         <div className="text-center mb-6">
           <h2 className="text-2xl font-serif text-accent mb-2">Puzzle: {sceneTitle}</h2>
           <p className="text-muted-foreground">Slide the pieces to reveal the illustration</p>
+          {onSkip && (
+            <Button
+              onClick={onSkip}
+              variant="outline"
+              className="mt-4 text-sm"
+            >
+              Skip Puzzle
+            </Button>
+          )}
         </div>
 
         {/* Puzzle Container */}

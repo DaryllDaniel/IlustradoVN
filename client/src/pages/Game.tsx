@@ -554,6 +554,7 @@ export default function Game() {
                   imageUrl={PUZZLE_LIBRARY[currentPuzzleId].imageUrl}
                   sceneTitle={PUZZLE_LIBRARY[currentPuzzleId].title}
                   onComplete={() => completePuzzle(currentPuzzleId)}
+                  onSkip={() => completePuzzle(currentPuzzleId)}
                 />
               ) : (
                 /* Dialogue Box */
