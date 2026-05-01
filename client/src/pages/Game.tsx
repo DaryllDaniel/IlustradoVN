@@ -9,6 +9,7 @@ import { AdvancedSkillTree } from '@/components/AdvancedSkillTree';
 import { PuzzleGame } from '@/components/PuzzleGame';
 import { PUZZLE_LIBRARY } from '@/components/PuzzleGallery';
 import { LocationIntro } from '@/components/LocationIntro';
+import { ImageTransition } from '@/components/ImageTransition';
 
 import { Settings } from 'lucide-react';
 import { GameDrawer } from '@/components/GameDrawer';
@@ -35,6 +36,7 @@ interface SceneData {
   backgroundImage: string;
   options: DialogueOption[];
   skillPointReward?: number;
+  transitionImage?: string;
 }
 
 // Expanded story scenes with family, friends, locations, love interests, allies, and enemies
@@ -52,20 +54,32 @@ const STORY_SCENES: Record<string, SceneData> = {
       {
         text: 'I will become a scholar and expose the truth through writing.',
         awakeninglevelGain: 2,
-        nextScene: 'calamba-father',
+        nextScene: 'calamba-father-transition',
       },
       {
         text: 'I will learn medicine to heal our suffering people.',
         awakeninglevelGain: 1,
-        nextScene: 'calamba-father',
+        nextScene: 'calamba-father-transition',
       },
       {
         text: 'I will master all skills—knowledge, art, and strength.',
         awakeninglevelGain: 3,
-        nextScene: 'calamba-father',
+        nextScene: 'calamba-father-transition',
       },
     ],
     skillPointReward: 1,
+  },
+
+  'calamba-father-transition': {
+    id: 'calamba-father-transition',
+    title: 'The Seed of Calamba',
+    location: 'Calamba, Laguna Province, 1861',
+    character: 'Mentor',
+    dialogue: '',
+    portraitUrl: '',
+    backgroundImage: '/images/backgrounds/calamba_home.png',
+    options: [],
+    transitionImage: '/images/characters/Mentor_Transition.png',
   },
 
   'calamba-father': {
@@ -140,19 +154,31 @@ const STORY_SCENES: Record<string, SceneData> = {
         skillRequired: 'literature',
         skillLevel: 2,
         awakeninglevelGain: 2,
-        nextScene: 'ateneo-love',
+        nextScene: 'ateneo-love-transition',
       },
       {
         text: 'Both are necessary. I will master all forms of resistance.',
         awakeninglevelGain: 3,
-        nextScene: 'ateneo-love',
+        nextScene: 'ateneo-love-transition',
       },
       {
         text: 'I need to understand more before committing to any movement.',
         awakeninglevelGain: 1,
-        nextScene: 'ateneo-love',
+        nextScene: 'ateneo-love-transition',
       },
     ],
+  },
+
+  'ateneo-love-transition': {
+    id: 'ateneo-love-transition',
+    title: 'The Student of Manila',
+    location: 'Ateneo Municipal, Manila, 1872',
+    character: 'Transition',
+    dialogue: '',
+    portraitUrl: '',
+    backgroundImage: '/images/backgrounds/ateneo_classroom.png',
+    options: [],
+    transitionImage: '/images/characters/Leonor_Transition.png',
   },
 
   'ateneo-love': {
@@ -372,7 +398,8 @@ export default function Game() {
   const currentPuzzleId = `puzzle-${gameState.currentScene}`;
   const hasPuzzleForScene = Object.keys(PUZZLE_LIBRARY).includes(currentPuzzleId);
   const isPuzzleCompleted = gameState.completedPuzzles.includes(currentPuzzleId);
-  const showPuzzleOverlay = hasPuzzleForScene && !isPuzzleCompleted;
+  // Only show puzzle on odd chapters (1, 3, 5, etc.) - every other chapter
+  const showPuzzleOverlay = hasPuzzleForScene && !isPuzzleCompleted && gameState.currentChapter % 2 === 1;
 
   // Handle music for current scene
   useEffect(() => {
@@ -507,8 +534,21 @@ export default function Game() {
               )}
             </AnimatePresence>
 
+            {/* Image Transition Overlay */}
+            {!showLocationIntro && currentScene.transitionImage && (
+              <ImageTransition
+                imageUrl={currentScene.transitionImage}
+                onComplete={() => {
+                  const nextSceneId = currentScene.options[0]?.nextScene;
+                  if (nextSceneId) {
+                    advanceScene(nextSceneId);
+                  }
+                }}
+              />
+            )}
+
             {/* Puzzle Overlay */}
-            {!showLocationIntro && (
+            {!showLocationIntro && !currentScene.transitionImage && (
               showPuzzleOverlay ? (
                 <PuzzleGame
                   imageUrl={PUZZLE_LIBRARY[currentPuzzleId].imageUrl}
