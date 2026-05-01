@@ -88,14 +88,7 @@ export function PuzzleGame({ imageUrl, sceneTitle, onComplete }: PuzzleGameProps
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
       <Card className="bg-background p-8 max-w-2xl w-full mx-4 relative">
-        {/* ⚠️ DEV ONLY — remove before release */}
-        <button
-          onClick={handleComplete}
-          className="absolute top-3 right-3 bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded border-2 border-red-400 shadow-lg z-50"
-          title="DEV: Skip puzzle (remove before release)"
-        >
-          ⚠️ DEV: Skip
-        </button>
+        {/* Puzzle header and controls */}
 
         <div className="text-center mb-6">
           <h2 className="text-2xl font-serif text-accent mb-2">Puzzle: {sceneTitle}</h2>
