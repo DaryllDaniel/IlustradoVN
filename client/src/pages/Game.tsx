@@ -193,19 +193,31 @@ const STORY_SCENES: Record<string, SceneData> = {
       {
         text: 'I will protect you and our love above all else.',
         awakeninglevelGain: 1,
-        nextScene: 'europe-intro',
+        nextScene: 'europe-intro-transition',
       },
       {
         text: 'Our nation must come first. I hope you can understand.',
         awakeninglevelGain: 2,
-        nextScene: 'europe-intro',
+        nextScene: 'europe-intro-transition',
       },
       {
         text: 'Perhaps we can both serve the revolution together.',
         awakeninglevelGain: 2,
-        nextScene: 'europe-intro',
+        nextScene: 'europe-intro-transition',
       },
     ],
+  },
+
+  'europe-intro-transition': {
+    id: 'europe-intro-transition',
+    title: 'The Wanderer in Europe',
+    location: 'Aboard the Salvadora, 1882',
+    character: 'Transition',
+    dialogue: '',
+    portraitUrl: '',
+    backgroundImage: '/images/backgrounds/ateneo_classroom.png',
+    options: [{ text: 'Continue', nextScene: 'europe-intro' }],
+    transitionImage: '/images/cg/europe_transition.png',
   },
 
   // CHAPTER 3: THE WANDERER IN EUROPE
@@ -255,19 +267,31 @@ const STORY_SCENES: Record<string, SceneData> = {
         skillRequired: 'literature',
         skillLevel: 4,
         awakeninglevelGain: 3,
-        nextScene: 'dapitan-intro',
+        nextScene: 'dapitan-intro-transition',
       },
       {
         text: 'I will continue my work abroad, where I can write safely.',
         awakeninglevelGain: 1,
-        nextScene: 'dapitan-intro',
+        nextScene: 'dapitan-intro-transition',
       },
       {
         text: 'I must return and see the situation for myself first.',
         awakeninglevelGain: 2,
-        nextScene: 'dapitan-intro',
+        nextScene: 'dapitan-intro-transition',
       },
     ],
+  },
+
+  'dapitan-intro-transition': {
+    id: 'dapitan-intro-transition',
+    title: 'The Exile of Dapitan',
+    location: 'Arrival at Dapitan, 1892',
+    character: 'Transition',
+    dialogue: '',
+    portraitUrl: '',
+    backgroundImage: '/images/backgrounds/europe_street.png',
+    options: [{ text: 'Continue', nextScene: 'dapitan-intro' }],
+    transitionImage: '/images/cg/dapitan_transition.png',
   },
 
   // CHAPTER 4: THE EXILE OF DAPITAN
