@@ -92,7 +92,7 @@ export function EndScreen({ stats, onReturnToTitle, endingType = 'ending-revolut
       {/* Main content */}
       <div className="relative z-10 max-w-3xl w-full">
         {/* Title Section */}
-        <div className="text-center mb-12 animate-in fade-in duration-700">
+        <div className="text-center mb-12 animate-in fade-in duration-700 bg-black/60 backdrop-blur-md p-8 rounded-2xl border border-primary/30 shadow-2xl">
           {/* Ornamental divider */}
           <div className="flex justify-center gap-3 mb-6">
             <div className="text-accent text-3xl opacity-70">✦</div>
@@ -101,17 +101,17 @@ export function EndScreen({ stats, onReturnToTitle, endingType = 'ending-revolut
           </div>
 
           {/* Main message */}
-          <h1 className="text-5xl md:text-6xl font-bold text-accent mb-4 tracking-tight">
+          <h1 className="text-5xl md:text-6xl font-bold text-accent mb-4 tracking-tight drop-shadow-lg">
             {currentEnding.title}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl text-primary-foreground/80 font-serif italic">
+          <p className="text-xl text-primary-foreground/90 font-serif italic drop-shadow-md">
             {currentEnding.subtitle}
           </p>
 
           {/* Ending Description */}
-          <p className="text-lg text-primary-foreground/70 mt-4 max-w-2xl mx-auto">
+          <p className="text-lg text-primary-foreground mt-4 max-w-2xl mx-auto drop-shadow-md font-medium">
             {currentEnding.description}
           </p>
 

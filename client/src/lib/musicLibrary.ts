@@ -77,7 +77,7 @@ export const MUSIC_LIBRARY: Record<string, AudioTrack> = {
   'ending-revolutionary': {
     id: 'ending-revolutionary',
     title: 'Martyrdom',
-    url: 'https://archive.org/download/jamendo-398858/01-1734418-SoundForYou-Instrumental%20Rock.mp3',
+    url: 'https://archive.org/download/jamendo-565498/01-2168370-Sound%20Gallery%20by%20Dmitry%20Taras-Heroic%20Trailer.mp3',
     volume: 0.5,
     loop: true,
   },
