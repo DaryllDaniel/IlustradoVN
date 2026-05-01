@@ -78,7 +78,7 @@ const STORY_SCENES: Record<string, SceneData> = {
     dialogue: '',
     portraitUrl: '',
     backgroundImage: '/images/backgrounds/calamba_home.png',
-    options: [],
+    options: [{ text: 'Continue', nextScene: 'calamba-father' }],
     transitionImage: '/images/characters/Mentor_Transition.png',
   },
 
@@ -177,7 +177,7 @@ const STORY_SCENES: Record<string, SceneData> = {
     dialogue: '',
     portraitUrl: '',
     backgroundImage: '/images/backgrounds/ateneo_classroom.png',
-    options: [],
+    options: [{ text: 'Continue', nextScene: 'ateneo-love' }],
     transitionImage: '/images/characters/Leonor_Transition.png',
   },
 
