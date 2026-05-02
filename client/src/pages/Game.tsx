@@ -94,19 +94,49 @@ const STORY_SCENES: Record<string, SceneData> = {
       {
         text: 'I will work with Paciano and the resistance movement.',
         awakeninglevelGain: 2,
-        nextScene: 'ateneo-intro',
+        nextScene: 'calamba-paciano',
       },
       {
         text: 'I will pursue education first, then decide my path.',
         awakeninglevelGain: 1,
-        nextScene: 'ateneo-intro',
+        nextScene: 'calamba-paciano',
       },
       {
         text: 'I must understand both the enemy and the people before acting.',
         awakeninglevelGain: 2,
+        nextScene: 'calamba-paciano',
+      },
+    ],
+  },
+
+  'calamba-paciano': {
+    id: 'calamba-paciano',
+    title: 'The Burden of a Name',
+    location: 'Calamba, Laguna Province, 1872',
+    character: 'Paciano Rizal (Older Brother)',
+    dialogue: 'Jose, you must leave for Manila to study. But you cannot use our family name "Mercado". The Spanish are watching me closely because of my ties to Father Burgos. After they unjustly executed the Gomburza priests, anyone associated with them is a target. From now on, you will use our second surname, "Rizal". Let my reputation shield you while you arm yourself with knowledge.',
+    portraitUrl: '/images/characters/Paciano_Rizal.png', // Using Father's portrait as placeholder for Paciano if it doesn't exist
+    backgroundImage: '/images/backgrounds/calamba_home.png',
+    options: [
+      {
+        text: 'I understand. I will carry the name Rizal with honor.',
+        skillRequired: 'literature',
+        skillLevel: 1,
+        awakeninglevelGain: 2,
+        nextScene: 'ateneo-intro',
+      },
+      {
+        text: 'Why should we hide? The Mercado name is ours!',
+        awakeninglevelGain: 3,
+        nextScene: 'ateneo-intro',
+      },
+      {
+        text: 'A name is just a word. My actions will define me.',
+        awakeninglevelGain: 1,
         nextScene: 'ateneo-intro',
       },
     ],
+    skillPointReward: 1,
   },
 
   // CHAPTER 2: THE STUDENT OF MANILA
@@ -154,19 +184,49 @@ const STORY_SCENES: Record<string, SceneData> = {
         skillRequired: 'literature',
         skillLevel: 2,
         awakeninglevelGain: 2,
-        nextScene: 'ateneo-love-transition',
+        nextScene: 'ateneo-leonor-letters',
       },
       {
         text: 'Both are necessary. I will master all forms of resistance.',
         awakeninglevelGain: 3,
-        nextScene: 'ateneo-love-transition',
+        nextScene: 'ateneo-leonor-letters',
       },
       {
         text: 'I need to understand more before committing to any movement.',
         awakeninglevelGain: 1,
+        nextScene: 'ateneo-leonor-letters',
+      },
+    ],
+  },
+
+  'ateneo-leonor-letters': {
+    id: 'ateneo-leonor-letters',
+    title: 'Secrets in Ink',
+    location: 'Manila, 1880',
+    character: 'Leonor Rivera',
+    dialogue: 'It is getting harder to write to you, Jose. My mother intercepts the mail, and the friars have eyes everywhere. From now on, address your letters to "Taimis". It will be our secret—a hidden world where we can speak freely of love and revolution without fear of discovery. But secrecy is a heavy burden. How long can we live in shadows?',
+    portraitUrl: '/images/characters/Leonor_Rivera.png',
+    backgroundImage: '/images/backgrounds/ateneo_classroom.png',
+    options: [
+      {
+        text: 'As long as it takes. Our secret, Taimis, is safe with me.',
+        skillRequired: 'languages',
+        skillLevel: 2,
+        awakeninglevelGain: 1,
+        nextScene: 'ateneo-love-transition',
+      },
+      {
+        text: 'One day, we will not have to hide anymore.',
+        awakeninglevelGain: 2,
+        nextScene: 'ateneo-love-transition',
+      },
+      {
+        text: 'If shadows protect us, then I welcome the dark.',
+        awakeninglevelGain: 2,
         nextScene: 'ateneo-love-transition',
       },
     ],
+    skillPointReward: 1,
   },
 
   'ateneo-love-transition': {
@@ -235,18 +295,48 @@ const STORY_SCENES: Record<string, SceneData> = {
         skillRequired: 'literature',
         skillLevel: 3,
         awakeninglevelGain: 3,
-        nextScene: 'europe-berlin',
+        nextScene: 'europe-la-solidaridad',
       },
       {
         text: 'First, let me complete my medical studies and gather more knowledge.',
         skillRequired: 'medicine',
         skillLevel: 2,
         awakeninglevelGain: 2,
-        nextScene: 'europe-berlin',
+        nextScene: 'europe-la-solidaridad',
       },
       {
         text: 'I will do both—study and write. I will master every skill needed.',
         awakeninglevelGain: 3,
+        nextScene: 'europe-la-solidaridad',
+      },
+    ],
+    skillPointReward: 1,
+  },
+
+  'europe-la-solidaridad': {
+    id: 'europe-la-solidaridad',
+    title: 'A House Divided',
+    location: 'Madrid, Spain, 1889',
+    character: 'Marcelo H. del Pilar',
+    dialogue: 'Pepe, La Solidaridad needs your voice, but we cannot have two captains steering one ship. Our compatriots are divided—some follow your vision of assimilation and moral education, while others align with my pragmatic, political approach. If we show the Spanish government a fractured front, all our writing is in vain. Who should lead the Filipino colony?',
+    portraitUrl: '/images/characters/Marcelo_H_Del_Pilar.png', // Placeholder
+    backgroundImage: '/images/backgrounds/europe_street.png',
+    options: [
+      {
+        text: 'I will step aside. The cause is greater than my pride.',
+        awakeninglevelGain: 2,
+        nextScene: 'europe-berlin',
+      },
+      {
+        text: 'I must lead. They need an ilustrado to guide them.',
+        skillRequired: 'literature',
+        skillLevel: 3,
+        awakeninglevelGain: 3,
+        nextScene: 'europe-berlin',
+      },
+      {
+        text: 'Let us lead together as equals for the motherland.',
+        awakeninglevelGain: 2,
         nextScene: 'europe-berlin',
       },
     ],
@@ -290,8 +380,40 @@ const STORY_SCENES: Record<string, SceneData> = {
     dialogue: '',
     portraitUrl: '',
     backgroundImage: '/images/backgrounds/europe_street.png',
-    options: [{ text: 'Continue', nextScene: 'dapitan-intro' }],
+    options: [{ text: 'Continue', nextScene: 'dapitan-josephine' }],
     transitionImage: '/images/cg/dapitan_transition.png',
+  },
+
+  'dapitan-josephine': {
+    id: 'dapitan-josephine',
+    title: 'An Unexpected Patient',
+    location: 'Dapitan, Mindanao, 1895',
+    character: 'Josephine Bracken',
+    dialogue: 'Dr. Rizal, they told us you were the finest ophthalmic surgeon in the East. My foster father, Mr. Taufer, is losing his sight, and we traveled from Hong Kong hoping for a miracle. But arriving here... in this quiet place of exile, I did not expect to find someone so gentle, so misunderstood by the world. Will you help us?',
+    portraitUrl: './images/characters/Josephine_Bracken.png',
+    backgroundImage: '/images/backgrounds/dapitan_tropical.png',
+    options: [
+      {
+        text: 'I will do everything in my power to restore his sight.',
+        skillRequired: 'medicine',
+        skillLevel: 3,
+        awakeninglevelGain: 1,
+        nextScene: 'dapitan-intro',
+      },
+      {
+        text: 'I cannot promise a cure, but you are welcome here.',
+        awakeninglevelGain: 2,
+        nextScene: 'dapitan-intro',
+      },
+      {
+        text: 'Your presence brings light to this dark exile, Josephine.',
+        skillRequired: 'literature',
+        skillLevel: 2,
+        awakeninglevelGain: 1,
+        nextScene: 'dapitan-intro',
+      },
+    ],
+    skillPointReward: 1,
   },
 
   // CHAPTER 4: THE EXILE OF DAPITAN
