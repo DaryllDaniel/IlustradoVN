@@ -94,15 +94,6 @@ export function PuzzleGame({ imageUrl, sceneTitle, onComplete, onSkip }: PuzzleG
         <div className="text-center mb-6">
           <h2 className="text-2xl font-serif text-accent mb-2">Puzzle: {sceneTitle}</h2>
           <p className="text-muted-foreground">Slide the pieces to reveal the illustration</p>
-          {onSkip && (
-            <Button
-              onClick={onSkip}
-              variant="outline"
-              className="mt-4 text-sm"
-            >
-              Skip Puzzle
-            </Button>
-          )}
         </div>
 
         {/* Puzzle Container */}
