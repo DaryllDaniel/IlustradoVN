@@ -13,6 +13,7 @@ interface GameDrawerProps {
   isPlaying: boolean;
   onToggleMusic: () => void;
   completedPuzzles: string[];
+  visitedScenes: string[];
 }
 
 export function GameDrawer({
@@ -23,6 +24,7 @@ export function GameDrawer({
   isPlaying,
   onToggleMusic,
   completedPuzzles,
+  visitedScenes,
 }: GameDrawerProps) {
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
@@ -70,7 +72,7 @@ export function GameDrawer({
 
           {/* Puzzle Gallery */}
           <div className="pt-6 border-t border-accent/30">
-            <PuzzleGallery completedPuzzles={completedPuzzles} />
+            <PuzzleGallery completedPuzzles={completedPuzzles} visitedScenes={visitedScenes} />
           </div>
 
           {/* Game Information */}

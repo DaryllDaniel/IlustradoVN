@@ -17,6 +17,7 @@ export interface GameState {
   dialogueHistory: string[];
   choices: string[];
   completedPuzzles: string[];
+  visitedScenes: string[];
 }
 
 interface GameContextType {
@@ -48,6 +49,7 @@ const initialGameState: GameState = {
   dialogueHistory: [],
   choices: [],
   completedPuzzles: [],
+  visitedScenes: [],
 };
 
 const LOCAL_STORAGE_KEY = 'ilustrado_rpg_save';
@@ -107,6 +109,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     setGameState((prev) => ({
       ...prev,
       currentScene: sceneId,
+      visitedScenes: prev.visitedScenes.includes(sceneId)
+        ? prev.visitedScenes
+        : [...prev.visitedScenes, sceneId],
     }));
   };
 

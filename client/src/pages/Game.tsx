@@ -427,13 +427,6 @@ const STORY_SCENES: Record<string, SceneData> = {
     backgroundImage: '/images/backgrounds/dapitan_tropical.png', // Anime Tropical Hut (Dapitan)
     options: [
       {
-        text: 'I will join the Katipunan. Armed revolution is now necessary.',
-        skillRequired: 'fencing',
-        skillLevel: 3,
-        awakeninglevelGain: 3,
-        nextScene: 'ending-revolutionary',
-      },
-      {
         text: 'I will continue my peaceful work and refuse violence.',
         skillRequired: 'medicine',
         skillLevel: 3,
@@ -461,8 +454,121 @@ const STORY_SCENES: Record<string, SceneData> = {
         awakeninglevelGain: 2,
         nextScene: 'ending-lover',
       },
+      {
+        text: 'I will join the Katipunan. Armed revolution is now necessary.',
+        skillRequired: 'fencing',
+        skillLevel: 3,
+        awakeninglevelGain: 3,
+        nextScene: 'trial-arrest',
+      },
     ],
     skillPointReward: 3,
+  },
+
+  // CHAPTER 5: THE TRIAL AND FINAL DAYS
+
+  'trial-arrest': {
+    id: 'trial-arrest',
+    title: 'Chains of Fate',
+    location: 'Fort Santiago, Manila, November 1896',
+    character: 'Spanish Interrogator (Col. Francisco Olive)',
+    dialogue: 'Dr. Rizal. You are charged with rebellion, sedition, and forming illegal associations. We have testimony that you were the intellectual founder of the Katipunan. We have letters—your letters—read aloud in their secret rites. Your novels stirred the masses into revolt. The blood spilled in this uprising stains your hands as surely as if you had fired the guns yourself. What do you say for yourself?',
+    portraitUrl: '/images/characters/Col_Francisco_Olive.png',
+    backgroundImage: '/images/backgrounds/bagumbayan_field.png',
+    options: [
+      {
+        text: 'I never sanctioned violence. My writings called for reform, not bloodshed.',
+        skillRequired: 'literature',
+        skillLevel: 3,
+        awakeninglevelGain: 2,
+        nextScene: 'trial-tribunal',
+      },
+      {
+        text: 'I stand by every word I have written. The people\'s cause is just.',
+        awakeninglevelGain: 3,
+        nextScene: 'trial-tribunal',
+      },
+      {
+        text: 'You cannot put ideas on trial. Truth is not sedition.',
+        skillRequired: 'languages',
+        skillLevel: 3,
+        awakeninglevelGain: 2,
+        nextScene: 'trial-tribunal',
+      },
+    ],
+    skillPointReward: 1,
+  },
+
+  'trial-tribunal': {
+    id: 'trial-tribunal',
+    title: 'The Court of Lies',
+    location: 'Military Court, Cuartel de España, December 1896',
+    character: 'Judge Advocate (Lt. Col. Orbeta)',
+    dialogue: 'The prosecution rests, Dr. Rizal. You have heard the testimonies. Witnesses swore they saw your name invoked at Katipunan rallies. Bonifacio\'s men carried copies of your Noli Me Tangere as sacred texts. Your own manifesto—written from Dapitan—was read as a call to arms. The Spanish Crown has shown you every courtesy; you repaid it with sedition. The tribunal has reached its verdict: Guilty on all three counts. Sentence—death by firing squad. Do you have final words for this court?',
+    portraitUrl: '/images/characters/Lt_Col_Orbeta.png',
+    backgroundImage: '/images/backgrounds/bagumbayan_field.png',
+    options: [
+      {
+        text: 'I forgive you all. History will be my true judge.',
+        skillRequired: 'literature',
+        skillLevel: 4,
+        awakeninglevelGain: 3,
+        nextScene: 'trial-final-night-transition',
+      },
+      {
+        text: 'This verdict is unjust. But I will meet death with my head held high.',
+        awakeninglevelGain: 2,
+        nextScene: 'trial-final-night-transition',
+      },
+      {
+        text: 'You execute a man, but you cannot execute an idea.',
+        awakeninglevelGain: 3,
+        nextScene: 'trial-final-night-transition',
+      },
+    ],
+    skillPointReward: 1,
+  },
+
+  'trial-final-night-transition': {
+    id: 'trial-final-night-transition',
+    title: 'Mi Último Adiós',
+    location: 'Fort Santiago, December 29, 1896',
+    character: 'Transition',
+    dialogue: '',
+    portraitUrl: '',
+    backgroundImage: '/images/backgrounds/bagumbayan_field.png',
+    options: [{ text: 'Continue', nextScene: 'trial-final-night' }],
+    transitionImage: '/images/cg/trial_final_night_transition.png',
+  },
+
+  'trial-final-night': {
+    id: 'trial-final-night',
+    title: 'Mi Último Adiós',
+    location: 'Fort Santiago, December 29, 1896 — The Night Before',
+    character: 'Josephine Bracken',
+    dialogue: 'Jose... they will not let me stay long. I brought paper and pen, as you asked. They say tomorrow at dawn... I cannot say it. I will not say it. The sisters found your retraction letter—did you truly sign it? Was it coerced? You must tell me. But whatever comes... I have loved you more than I can say. More than any revolution. More than any novel. Just you.',
+    portraitUrl: '/images/characters/Josephine_Bracken.png',
+    backgroundImage: '/images/backgrounds/bagumbayan_field.png',
+    options: [
+      {
+        text: 'The retraction was forced. My true testament is the poem I am writing tonight—"Mi Último Adiós."',
+        skillRequired: 'literature',
+        skillLevel: 4,
+        awakeninglevelGain: 3,
+        nextScene: 'ending-revolutionary',
+      },
+      {
+        text: 'Tell Paciano, tell my family—I die without guilt. The pen was always mightier.',
+        awakeninglevelGain: 2,
+        nextScene: 'ending-revolutionary',
+      },
+      {
+        text: 'My love—hide this poem in your shoe when you leave. Let it reach the world.',
+        awakeninglevelGain: 2,
+        nextScene: 'ending-revolutionary',
+      },
+    ],
+    skillPointReward: 2,
   },
 
   // ENDING 1: THE HISTORICAL MARTYR
@@ -471,9 +577,9 @@ const STORY_SCENES: Record<string, SceneData> = {
     title: 'The Revolutionary Martyr',
     location: 'Bagumbayan, Manila, December 30, 1896',
     character: 'Narrator',
-    dialogue: 'You joined the Katipunan and fought alongside your people. When the revolution erupted, you were arrested for sedition. The Spanish made you a symbol—a martyr for the cause. On December 30, 1896, you faced the firing squad with courage, your final words echoing through the ages: "Consummatum est—It is finished." Your sacrifice ignited the revolution and inspired generations to come.',
+    dialogue: 'The morning of December 30, 1896 broke cold and grey over Bagumbayan field. You walked calmly among your guards, your hidden poem already smuggled out inside Josephine\'s shoe. Before the firing squad you asked to face them—it was denied. They feared even your dying gaze. As the rifles cracked, you managed to turn, to face the sky, to fall looking up at the sun you had written of in your final verse: "Farewell, dear Fatherland, clime of the sun caressed…" The crowd was silent. Then, as if from nowhere, a woman wept. Then another. Then a thousand voices rose. The revolution had its martyr. The nation had its soul.',
     portraitUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ec/Jose_Rizal_full.jpg',
-    backgroundImage: '/images/backgrounds/bagumbayan_field.png', // Anime Dramatic Field (Execution)
+    backgroundImage: '/images/backgrounds/bagumbayan_field.png',
     options: [],
   },
 
@@ -544,8 +650,7 @@ export default function Game() {
   const currentPuzzleId = `puzzle-${gameState.currentScene}`;
   const hasPuzzleForScene = Object.keys(PUZZLE_LIBRARY).includes(currentPuzzleId);
   const isPuzzleCompleted = gameState.completedPuzzles.includes(currentPuzzleId);
-  // Only show puzzle on odd chapters (1, 3, 5, etc.) - every other chapter
-  const showPuzzleOverlay = hasPuzzleForScene && !isPuzzleCompleted && gameState.currentChapter % 2 === 1;
+  const showPuzzleOverlay = hasPuzzleForScene && !isPuzzleCompleted;
 
   // Handle music for current scene
   useEffect(() => {
@@ -615,6 +720,7 @@ export default function Game() {
           isPlaying={audio.isPlaying}
           onToggleMusic={() => (audio.isPlaying ? audio.pause() : audio.resume())}
           completedPuzzles={gameState.completedPuzzles}
+          visitedScenes={gameState.visitedScenes}
         />
       </>
     );
@@ -643,6 +749,7 @@ export default function Game() {
           isPlaying={audio.isPlaying}
           onToggleMusic={() => (audio.isPlaying ? audio.pause() : audio.resume())}
           completedPuzzles={gameState.completedPuzzles}
+          visitedScenes={gameState.visitedScenes}
         />
       </>
     );
@@ -728,6 +835,7 @@ export default function Game() {
         isPlaying={audio.isPlaying}
         onToggleMusic={() => (audio.isPlaying ? audio.pause() : audio.resume())}
         completedPuzzles={gameState.completedPuzzles}
+        visitedScenes={gameState.visitedScenes}
       />
       {/* Skill Tree Drawer */}
       <SkillDrawer
